@@ -1,0 +1,2 @@
+C:\Users\HP\Downloads\WinPmem-4.0.rc1\WinPmem-4.0.rc1\kernel\executable\x64\Debug\winpmem.exe
+C:\Users\HP\Downloads\project2\kernel\executable\x64\Debug\winpmem.exe

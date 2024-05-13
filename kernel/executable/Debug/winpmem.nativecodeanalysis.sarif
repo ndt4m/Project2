@@ -1,0 +1,851 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'WinPmem::last_error' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                },
+                "region": {
+                  "startLine": 372,
+                  "startColumn": 10,
+                  "endLine": 372,
+                  "endColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinPmem::{ctor}",
+                  "decoratedName": "??0WinPmem@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "WinPmem::last_error"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "Variable 'WinPmem::out_fd_' is uninitialized. Always initialize a member variable (type.6)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                },
+                "region": {
+                  "startLine": 372,
+                  "startColumn": 10,
+                  "endLine": 372,
+                  "endColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinPmem::{ctor}",
+                  "decoratedName": "??0WinPmem@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "WinPmem::out_fd_"
+          }
+        },
+        {
+          "ruleId": "C28193",
+          "message": {
+            "text": "'service' holds a value that must be examined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                },
+                "region": {
+                  "startLine": 544,
+                  "startColumn": 25
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinPmem::install_driver",
+                  "decoratedName": "?install_driver@WinPmem@@UAE_JXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 528,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 528,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 529,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 532,
+                            "startColumn": 23
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 534,
+                            "startColumn": 18
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 536,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 538,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 544,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 558,
+                            "startColumn": 21
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 560,
+                            "startColumn": 11
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 563,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 568,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 580,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 582,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 591,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 597,
+                            "startColumn": 9
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 599,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 600,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 601,
+                            "startColumn": 20
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 603,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 605,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 611,
+                            "startColumn": 2
+                          }
+                        }
+                      },
+                      "importance": "important"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6387",
+          "message": {
+            "text": "'service' could be '0'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                },
+                "region": {
+                  "startLine": 631,
+                  "startColumn": 2,
+                  "endLine": 631,
+                  "endColumn": 16
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinPmem::uninstall_driver",
+                  "decoratedName": "?uninstall_driver@WinPmem@@UAE_JXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 617,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 617,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 618,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 620,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 622,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 624,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 626,
+                            "startColumn": 6
+                          }
+                        },
+                        "message": {
+                          "text": "'service' may be NULL (Skip this branch)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 631,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "'service' is an Input to 'DeleteService' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\um\\winsvc.h:1145)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 631,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "'service' should not be NULL, because this is not consistent with the SAL annotation on 'DeleteService'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C6387",
+          "message": {
+            "text": "'service' could be '0'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                },
+                "region": {
+                  "startLine": 632,
+                  "startColumn": 2,
+                  "endLine": 632,
+                  "endColumn": 21
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "WinPmem::uninstall_driver",
+                  "decoratedName": "?uninstall_driver@WinPmem@@UAE_JXZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 617,
+                            "startColumn": 12
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 617,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 618,
+                            "startColumn": 17
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 620,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 622,
+                            "startColumn": 6
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 624,
+                            "startColumn": 10
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 626,
+                            "startColumn": 6
+                          }
+                        },
+                        "message": {
+                          "text": "'service' may be NULL (Skip this branch)"
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 631,
+                            "startColumn": 15
+                          }
+                        },
+                        "message": {
+                          "text": "'service' is an Input to 'DeleteService' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\um\\winsvc.h:1145)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 632,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'service' is an Input to 'CloseServiceHandle' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\um\\winsvc.h:1085)"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "important"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+                          },
+                          "region": {
+                            "startLine": 632,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'service' should not be NULL, because this is not consistent with the SAL annotation on 'CloseServiceHandle'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.36.32532.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/HP/Downloads/WinPmem-4.0.rc1/WinPmem-4.0.rc1/kernel/executable/winpmem.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "0ddeaa03805c37db5fc81dec23a7c9b3eb61cf173daaf4fb72cc9b7d50a00e40"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/executable/winpmem.h"
+          },
+          "hashes": {
+            "sha-256": "5f09752f5cb9e30561ee4c6e413ede0668b319f9928388dbe991418e712b092f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/userspace_interface/ctl_codes.h"
+          },
+          "hashes": {
+            "sha-256": "e5ad5dd7f71a63a48cbfcc7a23c43de429575ae881b4fa964b733785cba58085"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/hp/downloads/winpmem-4.0.rc1/winpmem-4.0.rc1/kernel/userspace_interface/winpmem_shared.h"
+          },
+          "hashes": {
+            "sha-256": "657fe010df5a86de3fe244ab3ae03693513c07792bf129f621a8a2bbce38ecca"
+          }
+        }
+      ]
+    }
+  ]
+}
