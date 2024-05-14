@@ -2,12 +2,29 @@
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
+#include <ctime>
+#include <iomanip>
+
 bool DirectoryExists(const TString& dirName_in)
 {
     DWORD ftyp = GetFileAttributes(dirName_in.c_str());
     if (ftyp == INVALID_FILE_ATTRIBUTES) return false;
     if (ftyp & FILE_ATTRIBUTE_DIRECTORY) return true;
     return false;
+}
+
+TString get_current_timestamp()
+{
+    // Get current time
+    std::time_t now = std::time(nullptr);
+    std::tm tm;
+    localtime_s(&tm, &now);  // safer version of localtime
+
+    // Create a timestamp string
+    Tostringstream timestamp;
+    timestamp << std::put_time(&tm, TEXT("_%Y%m%d_%H%M%S"));
+
+    return timestamp.str();
 }
 
 int _tmain(int argc, TCHAR* argv[])
@@ -30,19 +47,6 @@ int _tmain(int argc, TCHAR* argv[])
     TString newDir = currentDir;
     newDir += TEXT("\\");
     newDir += output_dir_name;
-
-    char* cNewDir;
-#ifdef UNICODE
-    // Convert TCHAR* to char*
-    /*printf("Using Unicode Charset\n");*/
-    int bufferSize = WideCharToMultiByte(CP_UTF8, 0, newDir.c_str(), -1, NULL, 0, NULL, NULL);
-    cNewDir = new char[bufferSize];
-    WideCharToMultiByte(CP_UTF8, 0, newDir.c_str(), -1, cNewDir, bufferSize, NULL, NULL);
-#else
-    // No conversion needed if TCHAR is char
-    /*printf("Using Multi-Byte Charset\n");*/
-    cNewDir = newDir.c_str();
-#endif
 
     // Check if the directory already exists
     if (!DirectoryExists(newDir))
@@ -80,15 +84,48 @@ int _tmain(int argc, TCHAR* argv[])
             memset(msg, 0, sizeof(msg));
             break;
         }
+
+        TString crtTimestamp = get_current_timestamp();
+        TString logDir = newDir + TEXT("\\log") + crtTimestamp;
+        char* c_crtTimestamp;
+        char* c_logDir;
+#ifdef UNICODE
+        // Convert TCHAR* to char*
+        /*printf("Using Unicode Charset\n");*/
+        int bufferSize = WideCharToMultiByte(CP_UTF8, 0, logDir.c_str(), -1, NULL, 0, NULL, NULL);
+        c_logDir = new char[bufferSize];
+        WideCharToMultiByte(CP_UTF8, 0, logDir.c_str(), -1, c_logDir, bufferSize, NULL, NULL);
+
+        bufferSize = WideCharToMultiByte(CP_UTF8, 0, crtTimestamp.c_str(), -1, NULL, 0, NULL, NULL);
+        c_crtTimestamp = new char[bufferSize];
+        WideCharToMultiByte(CP_UTF8, 0, crtTimestamp.c_str(), -1, c_crtTimestamp, bufferSize, NULL, NULL);
+#else
+        // No conversion needed if TCHAR is char
+        /*printf("Using Multi-Byte Charset\n");*/
+        cNewDir = logDir.c_str();
+        c_crtTimestamp = crtTimestamp.c_str()
+#endif
+
+        if (!DirectoryExists(logDir))
+        {
+            // Create the directory
+            if (CreateDirectory(logDir.c_str(), NULL)) {
+                std::cout << "Directory " << c_logDir << " created successfully!\n";
+            }
+            else {
+                std::cerr << "Failed to create directory! Error code: " << GetLastError() << std::endl;
+            }
+        }
+
         std::cout << "[+] Start dumping\n";
-        tool->dump_ram(newDir);
-        tool->dump_process_info(cNewDir);
-        tool->dum_net(cNewDir);
-        tool->dump_registers(newDir);
+        tool->dump_ram(logDir, crtTimestamp);
+        tool->dump_process_info(c_logDir, c_crtTimestamp);
+        tool->dum_net(c_logDir, c_crtTimestamp);
+        tool->dump_registers(logDir, crtTimestamp);
         std::cout << "[+] End dumping\n";
 
         std::cout << "[+] Start sending dump to server\n";
-        if (tool->sendDir(cNewDir, ConnectSocket) == 1)
+        if (tool->sendDir(c_logDir, ConnectSocket) == 1)
         {
             std::cout << "[-] Error on sending dump to server\n";
             memset(msg, 0, sizeof(msg));
@@ -96,13 +133,14 @@ int _tmain(int argc, TCHAR* argv[])
         }
         std::cout << "[+] Dump has been successfully sent to server\n";
         memset(msg, 0, sizeof(msg));
+#ifdef UNICODE
+        delete[] c_logDir;
+        delete[] c_crtTimestamp;
+#endif
     }
     // cleanup
     closesocket(ConnectSocket);
     WSACleanup();
-#ifdef UNICODE
-    delete[] cNewDir;
-#endif
 
     return -1;
 }

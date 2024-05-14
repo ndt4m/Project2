@@ -11,7 +11,7 @@
 
 #define File 0
 #define Dir 1
-#define SIZE 4096
+#define SIZE (1024*16)
 
 #ifdef UNICODE
 typedef std::wstring TString;
@@ -69,10 +69,10 @@ struct box
 class InfoDumping
 {
 public:
-    virtual int dump_ram(TString dir);
-    virtual int dump_registers(TString dir);
-    virtual void dump_process_info(char* dir);
-    virtual void dum_net(char* dir);
+    virtual int dump_ram(TString dir, TString timestamp);
+    virtual int dump_registers(TString dir, TString timestamp);
+    virtual void dump_process_info(char* dir, char* timestamp);
+    virtual void dum_net(char* dir, char* timestamp);
     virtual SOCKET constructConnection(TString port_number, TString server_address);
     virtual int sendDir(std::string fileName, SOCKET sockfd);
     virtual int receiveAll(size_t size, char* dest, SOCKET sockfd);

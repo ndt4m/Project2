@@ -433,10 +433,12 @@ WinPmem* WinPmemFactory()
     }
 }
 
-int InfoDumping::dump_ram(TString dir)
+int InfoDumping::dump_ram(TString dir, TString timestamp)
 {
     TString output_filename = dir;
-    output_filename += TEXT("\\ramDump.raw");
+    output_filename += TEXT("\\ramDump");
+    output_filename += timestamp;
+    output_filename += TEXT(".raw");
 
     __int64 status;
     unsigned __int32 mode = PMEM_MODE_PHYSICAL;
@@ -681,9 +683,9 @@ void EnumerateKey(HKEY hKey, LPCTSTR lpSubKey, Tofstream& outputFile) {
     }
 }
 
-int InfoDumping::dump_registers(TString dir)
+int InfoDumping::dump_registers(TString dir, TString timestamp)
 {
-    Tofstream outputFile1(dir + TEXT("\\HCR_registry_dump.json"));
+    Tofstream outputFile1(dir + TEXT("\\HCR_registry_dump") + timestamp + TEXT(".json"));
     if (!outputFile1.is_open()) {
         std::cerr << "[-] ERROR: Failed to open file for writing HKEY_CLASSES_ROOT!" << std::endl;
         return 1;
@@ -694,9 +696,9 @@ int InfoDumping::dump_registers(TString dir)
     outputFile1 << TEXT(" ]\n");
     outputFile1 << TEXT("}\n");
     outputFile1.close();
-    printf("HKEY_CLASSES_ROOT Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HCR_registry_dump.json")).c_str());
+    printf("HKEY_CLASSES_ROOT Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HCR_registry_dump") + timestamp + TEXT(".json")).c_str());
 
-    Tofstream outputFile2(dir + TEXT("\\HCU_registry_dump.json"));
+    Tofstream outputFile2(dir + TEXT("\\HCU_registry_dump") + timestamp + TEXT(".json"));
     if (!outputFile2.is_open()) {
         std::cerr << "[-] ERROR: Failed to open file for writing HKEY_CURRENT_USER!" << std::endl;
         return 1;
@@ -707,9 +709,9 @@ int InfoDumping::dump_registers(TString dir)
     outputFile2 << TEXT(" ]\n");
     outputFile2 << TEXT("}\n");
     outputFile2.close();
-    printf("HKEY_CURRENT_USER Registry dump completed.Results saved to %S\n", (dir + TEXT("\\HCU_registry_dump.json")).c_str());
+    printf("HKEY_CURRENT_USER Registry dump completed.Results saved to %S\n", (dir + TEXT("\\HCU_registry_dump") + timestamp + TEXT(".json")).c_str());
 
-    Tofstream outputFile3(dir + TEXT("\\HLM_registry_dump.json"));
+    Tofstream outputFile3(dir + TEXT("\\HLM_registry_dump") + timestamp + TEXT(".json"));
     if (!outputFile3.is_open()) {
         std::cerr << "[-] ERROR: Failed to open file for writing HKEY_LOCAL_MACHINE!" << std::endl;
         return 1;
@@ -720,9 +722,9 @@ int InfoDumping::dump_registers(TString dir)
     outputFile3 << TEXT(" ]\n");
     outputFile3 << TEXT("}\n");
     outputFile3.close();
-    printf("HKEY_LOCAL_MACHINE Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HLM_registry_dump.json")).c_str());
+    printf("HKEY_LOCAL_MACHINE Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HLM_registry_dump") + timestamp + TEXT(".json")).c_str());
 
-    Tofstream outputFile4(dir + TEXT("\\HU_registry_dump.json"));
+    Tofstream outputFile4(dir + TEXT("\\HU_registry_dump") + timestamp + TEXT(".json"));
     if (!outputFile4.is_open()) {
         std::cerr << "[-] ERROR: Failed to open file for writing HKEY_USERS!" << std::endl;
         return 1;
@@ -733,9 +735,9 @@ int InfoDumping::dump_registers(TString dir)
     outputFile4 << TEXT(" ]\n");
     outputFile4 << TEXT("}\n");
     outputFile4.close();
-    printf("HKEY_USERS Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HU_registry_dump.json")).c_str());
+    printf("HKEY_USERS Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HU_registry_dump") + timestamp + TEXT(".json")).c_str());
 
-    Tofstream outputFile5(dir + TEXT("\\HCC_registry_dump.json"));
+    Tofstream outputFile5(dir + TEXT("\\HCC_registry_dump") + timestamp + TEXT(".json"));
     if (!outputFile5.is_open()) {
         std::cerr << "[-] ERROR: Failed to open file for writing HKEY_CURRENT_CONFIG!" << std::endl;
         return 1;
@@ -746,14 +748,14 @@ int InfoDumping::dump_registers(TString dir)
     outputFile5 << TEXT(" ]\n");
     outputFile5 << TEXT("}\n");
     outputFile5.close();
-    printf("HKEY_CURRENT_CONFIG Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HCC_registry_dump.json")).c_str());
+    printf("HKEY_CURRENT_CONFIG Registry dump completed. Results saved to %S\n", (dir + TEXT("\\HCC_registry_dump") + timestamp + TEXT(".json")).c_str());
 
     return 0;
 }
 
-void InfoDumping::dump_process_info(char* dir)
+void InfoDumping::dump_process_info(char* dir, char* timestamp)
 {
-    std::string fileName = "\\Process_info_dump.csv";
+    std::string fileName = "\\Process_info_dump" + std::string(timestamp) + ".csv";
     std::string command = "tasklist /v /FO csv > ";
     command += dir;
     command += fileName;
@@ -823,9 +825,9 @@ TString netStatInfoToJson(const std::vector<NetStatInfo>& netstatInfo) {
     return oss.str();
 }
 
-void InfoDumping::dum_net(char* dir)
+void InfoDumping::dum_net(char* dir, char* timestamp)
 {
-    std::string netAdaptStat = "\\net_adapter_stats.json";
+    std::string netAdaptStat = "\\net_adapter_stats" + std::string(timestamp) + ".json";
     std::string netAdaptStatCmd = "powershell -Command \"Get-NetAdapterStatistics | ConvertTo-Json | Out-File -FilePath ";
     netAdaptStatCmd += dir;
     netAdaptStatCmd += netAdaptStat;
@@ -833,7 +835,7 @@ void InfoDumping::dum_net(char* dir)
     system(netAdaptStatCmd.c_str());
     printf("Dumping network adapter statistic complete successfully: %s\n", (dir + netAdaptStat).c_str());
 
-    std::string txtNetCon = "\\netstat.txt";
+    std::string txtNetCon = "\\netstat" + std::string(timestamp) + ".txt";
     std::string txtNetConCmd = "netstat -aon > ";
     std::string txtNetConFilePath = dir + txtNetCon;
     txtNetConCmd += txtNetConFilePath;
@@ -850,7 +852,7 @@ void InfoDumping::dum_net(char* dir)
     // Convert NetStatInfo objects to JSON
     TString json = netStatInfoToJson(netstatInfo);
     // Write JSON to a file
-    std::string jsonNetCon = "\\netstat.json";
+    std::string jsonNetCon = "\\netstat" + std::string(timestamp) + ".json";
     Tofstream jsonFile((dir + jsonNetCon).c_str());
     jsonFile << json;
     jsonFile.close();
