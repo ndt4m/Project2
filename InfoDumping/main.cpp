@@ -118,10 +118,10 @@ int _tmain(int argc, TCHAR* argv[])
         }
 
         std::cout << "[+] Start dumping\n";
-        tool->dump_ram(logDir, crtTimestamp);
+        //tool->dump_ram(logDir, crtTimestamp);
         tool->dump_process_info(c_logDir, c_crtTimestamp);
         tool->dum_net(c_logDir, c_crtTimestamp);
-        tool->dump_registers(logDir, crtTimestamp);
+        //tool->dump_registers(logDir, crtTimestamp);
         std::cout << "[+] End dumping\n";
 
         std::cout << "[+] Start sending dump to server\n";
