@@ -38,13 +38,12 @@ int sendAll(size_t size, char* src, int sockfd, clientInfo* cinf)
 
    int totalBytesSent = 0;
    int bytesSent = 0;
-   // printf("src: %s\n", src);
+   
    while (totalBytesSent < size)
    {
-      // printf("sending\n");
-      // printf("clientsocket in sendALL: %d\n", sockfd);
+      
       bytesSent = write(sockfd, src + totalBytesSent, size - totalBytesSent);
-      // printf("sended\n");
+      
       if (bytesSent < 0)
       {
          std::cerr << "[-] ERROR: " << strerror(errno) << "\n";
@@ -181,15 +180,6 @@ int writeDir(int sockfd, clientInfo* cinf, int flag, char* cwd)
    else // Case the file is Directory
    {
 
-      //   char beginCWD[PATH_MAX];
-
-      //   if (getcwd(beginCWD, PATH_MAX) == NULL)
-      //   {
-      //       std::cerr << "[-] ERROR: " << strerror(errno) << "\n";
-      //       close(sockfd);
-      //       return;
-      //   }
-
         std::string newDirName;
         if (flag == 1)
         {
@@ -221,13 +211,7 @@ int writeDir(int sockfd, clientInfo* cinf, int flag, char* cwd)
             exit(1);
 
         }
-        printf("dirname: %s\n", newDirName.c_str());
-      //   if (chdir(newDirName.c_str()) == -1)
-      //   {
-      //       std::cerr << "[-] ERROR: " << strerror(errno) << "\n";
-      //       close(sockfd);
-      //       return;
-      //   }   
+        printf("dirname: %s\n", newDirName.c_str());  
 
 
         int loopFlag = -1; 
@@ -247,12 +231,6 @@ int writeDir(int sockfd, clientInfo* cinf, int flag, char* cwd)
             }
         }
       return 0;
-      //   if (chdir(beginCWD) == -1)
-      //   {
-      //       std::cerr << "[-] ERROR: " << strerror(errno) << "\n";
-      //       close(sockfd);
-      //       return;
-      //   }
    }
    
 }
@@ -261,7 +239,6 @@ void* clientThread(void* arg)
 {
    struct clientInfo* cinf = (clientInfo*) arg;
    int sockfd = cinf->sockfd;
-   // printf("clientsocket in thread: %d\n", sockfd);
 
    char msg[sizeof(box)];
    bzero(msg, sizeof(msg));
@@ -269,21 +246,19 @@ void* clientThread(void* arg)
    getcwd(cwd, PATH_MAX);
    while (true)
    {
-       strncpy(msg, "dump", strlen("dump")+1);
-      //  printf("clientsocket before sending: %d\n", sockfd);
-       if (sendAll(sizeof(msg), msg, sockfd, cinf) == 1)
-       {
-         printf("[-] ERROR: Can't sent dumping message\n");
-         break;
-       }
-      //  printf("dfffffff\n");
-       if (writeDir(sockfd, cinf, 1, cwd) == 1)
-       {
-         break;
-       }
-       std::cout << "[+] Successfully receive dumping from " << inet_ntoa(cinf->cli_in.sin_addr) << ":" << ntohs(cinf->cli_in.sin_port) << std::endl;
-       bzero(msg, sizeof(msg));
-       sleep(cinf->interval);
+      strncpy(msg, "dump", strlen("dump")+1);
+      if (sendAll(sizeof(msg), msg, sockfd, cinf) == 1)
+      {
+        printf("[-] ERROR: Can't sent dumping message\n");
+        break;
+      }
+      if (writeDir(sockfd, cinf, 1, cwd) == 1)
+      {
+        break;
+      }
+      std::cout << "[+] Successfully receive dumping from " << inet_ntoa(cinf->cli_in.sin_addr) << ":" << ntohs(cinf->cli_in.sin_port) << std::endl;
+      bzero(msg, sizeof(msg));
+      sleep(cinf->interval);
    }
    delete cinf;
    return nullptr;
@@ -350,32 +325,32 @@ int main(int argc, char* argv[])
 	
 	if (listeningSockfd < 0) {
 		std::cerr << "[-] ERROR: Can't create a socket for listening\n";
-        exit(1);
+      exit(1);
 	}
 
 	printf("Server Socket is created.\n");
 
-    // Bind the IP address and port to a socket
+   // Bind the IP address and port to a socket
 	sockaddr_in serv_addr;
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(port_num);
-    serv_addr.sin_addr.s_addr = INADDR_ANY;
+   serv_addr.sin_family = AF_INET; // specify the address family is IPv4. 
+   serv_addr.sin_port = htons(port_num); //set the port number,
+   serv_addr.sin_addr.s_addr = INADDR_ANY; // bind to all available network interfaces on the host.
 
 
 	if (bind(listeningSockfd, (sockaddr*) &serv_addr, sizeof(serv_addr)) < 0) 
-    {
-       std::cerr << "[-] ERROR: Can't bind the IP address and port of the server to a socket\n";
-       exit(1);
-    }
+   {
+      std::cerr << "[-] ERROR: Can't bind the IP address and port of the server to a socket\n";
+      exit(1);
+   }
 
 	// Mark this socket is for listening
-    if (listen(listeningSockfd, 10) < 0) 
-    {
-       std::cerr <<"[-] ERROR: Can't mark the socket for listening\n";
-       exit(1);
-    }
+   if (listen(listeningSockfd, 10) < 0) 
+   {
+      std::cerr <<"[-] ERROR: Can't mark the socket for listening\n";
+      exit(1);
+   }
 
-    std::cout << "[*] Start server successfully in " << inet_ntoa(serv_addr.sin_addr) << ":" << ntohs(serv_addr.sin_port) << std::endl;
+   std::cout << "[*] Start server successfully in " << inet_ntoa(serv_addr.sin_addr) << ":" << ntohs(serv_addr.sin_port) << std::endl;
     
 	while (true) 
    {
@@ -383,7 +358,7 @@ int main(int argc, char* argv[])
 		// store their information in cliAddr
 		int clientSocket = accept(listeningSockfd, (struct sockaddr*)&cliAddr, &addr_size);
       struct clientInfo* cinf = new clientInfo;
-      // printf("clientsocket after accepting: %d\n", clientSocket);
+      
 		// Error handling
 		if (clientSocket < 0) 
       {
@@ -393,7 +368,7 @@ int main(int argc, char* argv[])
 		// Displaying information of
 		// connected client
       cinf->sockfd = clientSocket;
-      // printf("clientsocket after storing to cinf: %d\n", cinf->sockfd);
+      
       cinf->interval = interval;
       cinf->cli_in = cliAddr;
 		std::cout << "[+] New client connect from " << inet_ntoa(cliAddr.sin_addr) << ":" << ntohs(cliAddr.sin_port) << std::endl;
