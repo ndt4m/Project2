@@ -1,5 +1,10 @@
 # Tool to Dump Information from Compromised Network Nodes
-
+## Introduction
+This project is about "Building a tool to dump information from compromised network nodes". In this topic, I will focus on building a tool including server and client to extract the needed information from the nodes which is marked compromised. This tool can be used in the forensic investigations in cyberattacks. By using this tool we can gather as much information from the compromised network nodes as possible, after that the analyzing process will be taken place to produce the IOCs (Indicator of Compromised) for preventing future attacks.
+## Repository Structure
+The server source code and executable is place in `server_linux` folder
+The client source code and executable is place in `InfoDumping` folder
+The `kernel` folder is the source code of the open source tool `WinpMemp`
 ## Deployment
 
 In this project, both the client and server are portable executables. This means that no additional libraries are required. The only necessary files for deployment are the executables themselves.
