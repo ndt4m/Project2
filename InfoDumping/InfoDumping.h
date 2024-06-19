@@ -70,7 +70,7 @@ class InfoDumping
 {
 public:
     virtual int dump_ram(TString dir, TString timestamp);
-    virtual int dump_registers(TString dir, TString timestamp);
+    virtual int dump_registries(TString dir, TString timestamp);
     virtual void dump_process_info(char* dir, char* timestamp);
     virtual void dum_net(char* dir, char* timestamp);
     virtual SOCKET constructConnection(TString port_number, TString server_address);

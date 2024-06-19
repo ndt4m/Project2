@@ -683,7 +683,7 @@ void EnumerateKey(HKEY hKey, LPCTSTR lpSubKey, Tofstream& outputFile) {
     }
 }
 
-int InfoDumping::dump_registers(TString dir, TString timestamp)
+int InfoDumping::dump_registries(TString dir, TString timestamp)
 {
     Tofstream outputFile1(dir + TEXT("\\HCR_registry_dump") + timestamp + TEXT(".json"));
     if (!outputFile1.is_open()) {
